@@ -136,7 +136,13 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-# Internationalization
+if DEBUG:
+    import mimetypes
+
+    mimetypes.add_type('application/javascript', '.js', True)
+    mimetypes.add_type('text/css', '.css', True)
+
+#  Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
