@@ -143,6 +143,12 @@ if DEBUG:
     mimetypes.add_type('application/javascript', '.js', True)
     mimetypes.add_type('text/css', '.css', True)
 
+
+# Override the canonical URL for each user
+from django.urls import reverse_lazy
+ABSOLUTE_URL_OVERRIDES = {'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])}
+
+
 #  Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
