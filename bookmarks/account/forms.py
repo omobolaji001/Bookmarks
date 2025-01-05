@@ -33,7 +33,7 @@ class UserRegistrationForm(forms.ModelForm):
 
         Prevents users from registering with an already existing email
         """
-        data = self.cleaned_data
+        data = self.cleaned_data['email']
 
         if User.objects.filter(email=data).exists():
             raise forms.ValidationError('Email already exist')
@@ -49,7 +49,7 @@ class UserEditForm(forms.ModelForm):
 
     def clean_email(self):
         """ Validates email """
-        data = self.cleaned_data
+        data = self.cleaned_data['email']
         qs = User.objects.exclude(id=self.instance.id).filter(email=data)
 
         if qs.exists():
