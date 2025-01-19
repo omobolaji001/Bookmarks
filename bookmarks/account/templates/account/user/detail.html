@@ -9,7 +9,6 @@
   <div class="profile-info">
     <img src="{% thumbnail user.profile.photo 180x180 %}" class="user-detail">
   </div>
-  <div class="info">
   {% with total_followers=user.followers.count %}
     <span class="count"> <span class="total">{{ total_followers }} </span>follower{{ total_followers|pluralize}} </span>
     <a href="#"  data-id="{{ user.id }}" data-action="{% if request.user in user.followers.all %}un{% endif %}follow" class="follow button">
